@@ -1,5 +1,7 @@
 package evento;
 
+import evento.exception.ParticipantAlreadyExistsException;
+import evento.exception.ParticipantNotFoundException;
 import jdk.jfr.Category;
 
 import java.time.LocalDateTime;
@@ -26,14 +28,14 @@ public class EventImpl implements Event{
     }
 
     @Override
-    public void addParticipants(String participant) throws ParticipantAlreadyExistsException  {
+    public void addParticipants(String participant) throws ParticipantAlreadyExistsException {
         if(!participants.add(participant)){
             throw new ParticipantAlreadyExistsException("Participant: " + participant + "already exists in the list");
         }
     }
 
     @Override
-    public void removeParticipants(String participant) {
+    public void removeParticipants(String participant) throws ParticipantNotFoundException {
         try{
             if(this.participants.remove(participant)){
                 throw new ParticipantAlreadyExistsException("Participant: " + participant + " doesn't exist in the list");
