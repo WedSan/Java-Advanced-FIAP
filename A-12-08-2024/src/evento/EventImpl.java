@@ -14,13 +14,13 @@ public class EventImpl implements Event{
 
     private LocalDateTime date;
 
-    private Category category;
+    private EventCategory category;
 
     private Set<String> participants;
 
 
 
-    public EventImpl(String name, LocalDateTime date, Category category, Set<String> participants) {
+    public EventImpl(String name, LocalDateTime date, EventCategory category, Set<String> participants) {
         this.name = name;
         this.date = date;
         this.category = category;
@@ -80,11 +80,11 @@ public class EventImpl implements Event{
         this.date = date;
     }
 
-    public Category getCategory() {
+    public EventCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(EventCategory category) {
         this.category = category;
     }
 
