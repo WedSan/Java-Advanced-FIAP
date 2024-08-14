@@ -16,4 +16,6 @@ public interface Event {
     long countParticipants();
 
     Set<String> listParticipantsOrdered();
+
+    String getName();
 }
