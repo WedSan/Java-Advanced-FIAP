@@ -16,4 +16,8 @@ public class ParticipantAlreadyExistsException extends Exception {
 
     public ParticipantAlreadyExistsException() {
     }
+
+    public ParticipantAlreadyExistsException(String message) {
+        super(message);
+    }
 }
