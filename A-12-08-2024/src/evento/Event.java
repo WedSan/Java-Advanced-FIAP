@@ -18,4 +18,6 @@ public interface Event {
     Set<String> listParticipantsOrdered();
 
     String getName();
+
+    EventCategory getCategory();
 }
