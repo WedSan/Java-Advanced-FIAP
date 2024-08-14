@@ -49,7 +49,7 @@ public class EventImpl implements Event{
 
     @Override
     public Set<String> listParticipants() {
-        return Set.of();
+        return this.participants;
     }
 
     @Override
