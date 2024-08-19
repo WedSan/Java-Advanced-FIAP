@@ -20,11 +20,11 @@ public class EventImpl implements Event{
 
 
 
-    public EventImpl(String name, LocalDateTime date, EventCategory category, Set<String> participants) {
+    public EventImpl(String name, LocalDateTime date, EventCategory category) {
         this.name = name;
         this.date = date;
         this.category = category;
-        this.participants = participants;
+        this.participants = Set.of();
     }
 
     @Override
