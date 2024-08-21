@@ -1,8 +1,7 @@
-package evento;
+package br.com.fiap.evento;
 
-import evento.exception.ParticipantAlreadyExistsException;
-import evento.exception.ParticipantNotFoundException;
-import jdk.jfr.Category;
+import br.com.fiap.evento.exception.ParticipantAlreadyExistsException;
+import br.com.fiap.evento.exception.ParticipantNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.Set;

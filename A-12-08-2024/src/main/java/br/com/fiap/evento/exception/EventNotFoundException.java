@@ -1,4 +1,4 @@
-package evento.exception;
+package br.com.fiap.evento.exception;
 
 public class EventNotFoundException extends Exception{
 

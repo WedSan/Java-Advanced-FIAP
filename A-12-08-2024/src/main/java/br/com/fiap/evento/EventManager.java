@@ -1,6 +1,6 @@
-package evento;
+package br.com.fiap.evento;
 
-import evento.exception.EventNotFoundException;
+import br.com.fiap.evento.exception.EventNotFoundException;
 
 import java.util.List;
 import java.util.Map;

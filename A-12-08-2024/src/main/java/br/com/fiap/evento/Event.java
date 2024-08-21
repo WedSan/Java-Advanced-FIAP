@@ -1,7 +1,7 @@
-package evento;
+package br.com.fiap.evento;
 
-import evento.exception.ParticipantAlreadyExistsException;
-import evento.exception.ParticipantNotFoundException;
+import br.com.fiap.evento.exception.ParticipantAlreadyExistsException;
+import br.com.fiap.evento.exception.ParticipantNotFoundException;
 
 import java.util.Set;
 
