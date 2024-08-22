@@ -21,6 +21,6 @@ public interface EventManager {
 
     Map<String, Long> countParticipantsByEventOrdered();
 
-    Event findEvent(String eventName);
+    Event findEvent(String eventName) throws EventNotFoundException;
 
 }

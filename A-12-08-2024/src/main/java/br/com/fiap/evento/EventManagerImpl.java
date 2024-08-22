@@ -3,8 +3,10 @@ package br.com.fiap.evento;
 import br.com.fiap.evento.exception.EventNotFoundException;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class EventManagerImpl implements EventManager {
 
@@ -56,16 +58,27 @@ public class EventManagerImpl implements EventManager {
 
     @Override
     public Map<String, Long> countParticipantsByEvent() {
-        return Map.of();
+        return events.stream()
+        	.collect(
+        			Collectors.groupingBy(e -> e.getName(),
+					Collectors.summingLong(e -> e.getParticipants().size()))
+        			);
     }
 
     @Override
     public Map<String, Long> countParticipantsByEventOrdered() {
-        return Map.of();
+        return countParticipantsByEvent()
+        		.entrySet()
+        		.stream()
+        		.sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+        		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
 
     @Override
-    public Event findEvent(String eventName) {
-        return null;
+    public Event findEvent(String eventName) throws EventNotFoundException {
+        return events.stream()
+        		.filter(e -> e.getName().equalsIgnoreCase(eventName))
+        		.findFirst()
+        		.orElseThrow(() -> new EventNotFoundException("The event with name: " + eventName + "doesn't exist in the events list"));
     }
 }
