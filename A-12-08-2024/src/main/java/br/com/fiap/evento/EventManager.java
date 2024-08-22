@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface EventManager {
 
-    void addEvent(EventImpl event);
+    void addEvent(Event event);
 
     void removeEvent(String eventName) throws EventNotFoundException;
 

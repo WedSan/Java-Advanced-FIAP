@@ -10,20 +10,20 @@ import java.util.stream.Collectors;
 
 public class EventManagerImpl implements EventManager {
 
-    private List<EventImpl> events;
+    private List<Event> events;
 
     public EventManagerImpl() {
         this.events = new ArrayList<>();
     }
 
     @Override
-    public void addEvent(EventImpl event) {
+    public void addEvent(Event event) {
         events.add(event);
     }
 
     @Override
     public void removeEvent(String eventName) throws EventNotFoundException {
-        EventImpl eventToRemove = events
+        Event eventToRemove = events
                 .stream()
                 .filter(event -> event.getName().equalsIgnoreCase(eventName))
                 .findFirst()
@@ -35,7 +35,7 @@ public class EventManagerImpl implements EventManager {
     @Override
     public List<Event> listEventsByCategory(EventCategory category) {
         List<Event> eventsByCategory = new ArrayList<>();
-        for (EventImpl event : events) {
+        for (Event event : events) {
             if (event.getCategory() == category) {
                 eventsByCategory.add(event);
             }
@@ -61,7 +61,7 @@ public class EventManagerImpl implements EventManager {
         return events.stream()
         	.collect(
         			Collectors.groupingBy(e -> e.getName(),
-					Collectors.summingLong(e -> e.getParticipants().size()))
+					Collectors.summingLong(e -> e.listParticipants().size()))
         			);
     }
 
