@@ -1,5 +1,7 @@
 package net.andrelson.meeting;
 
+import net.andrelson.meeting.exception.MeetingRoomReservationException;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
@@ -50,7 +52,8 @@ public class MeetingRoom {
 		meetings.put(start, participants);
 	}
 
-	public void removeMeeting(LocalDateTime meetingStart) {
+	public void removeMeeting(LocalDateTime meetingStart) throws MeetingRoomReservationException{
+		meetings.remove(meetingStart);
 	}
 	public MeetingType getMeetingType() {
 		return meetingType;
@@ -59,8 +62,6 @@ public class MeetingRoom {
 	public void setMeetingType(MeetingType meetingType) {
 		this.meetingType = meetingType;
 	}
-	
-	
-	
+
 
 }
