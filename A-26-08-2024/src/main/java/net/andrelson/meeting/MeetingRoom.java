@@ -3,6 +3,7 @@ package net.andrelson.meeting;
 import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,9 +18,9 @@ public class MeetingRoom {
 	public MeetingRoom() {
 	}
 
-	public MeetingRoom(int meetingRoomNumber, Map<LocalDateTime, Set<String>> meetings, MeetingType meetingType) {
+	public MeetingRoom(int meetingRoomNumber, MeetingType meetingType) {
         this.meetingRoomNumber = meetingRoomNumber;
-        this.meetings = meetings;
+        this.meetings = new HashMap<>();
 		this.meetingType = meetingType;
 	}
 
