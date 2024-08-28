@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import net.andrelson.meeting.exception.MeetingRoomAlreadyExists;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 import net.andrelson.meeting.exception.UnvailableBookingException;
@@ -16,6 +17,14 @@ public class MeetingRoomManagerImpl implements MeetingManager {
 
 	public MeetingRoomManagerImpl(List<MeetingRoom> meetingRooms) {
 		this.meetingRooms = meetingRooms;
+	}
+
+	@Override
+	public void addMeetingRoom(MeetingRoom meetingRoom) throws MeetingRoomAlreadyExists {
+		if(meetingRooms.contains(meetingRoom)){
+			throw new MeetingRoomAlreadyExists("The meeting room number: " + meetingRoom.getMeetingRoomNumber() + "already exists");
+		}
+		meetingRooms.add(meetingRoom);
 	}
 
 	@Override
@@ -31,7 +40,7 @@ public class MeetingRoomManagerImpl implements MeetingManager {
 
 		meetingRoomAvailable.addMeeting(bookingDate, meetingParticipants);
 		return meetingRoomAvailable;
-	}	
+	}
 
 	@Override
 	public void cancelBookMeetingRoom(MeetingRoom meetingRoom, LocalDateTime bookingDate)
