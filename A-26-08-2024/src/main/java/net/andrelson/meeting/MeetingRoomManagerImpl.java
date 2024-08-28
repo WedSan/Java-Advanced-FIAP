@@ -1,6 +1,7 @@
 package net.andrelson.meeting;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +13,10 @@ import net.andrelson.meeting.exception.UnvailableBookingException;
 public class MeetingRoomManagerImpl implements MeetingManager {
 	
 	private List<MeetingRoom> meetingRooms;
+
+	public MeetingRoomManagerImpl(List<MeetingRoom> meetingRooms) {
+		this.meetingRooms = meetingRooms;
+	}
 
 	@Override
 	public MeetingRoom bookMeetingRoom(LocalDateTime bookingDate, Set<String> meetingParticipants,
