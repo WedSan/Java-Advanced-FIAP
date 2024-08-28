@@ -1,10 +1,9 @@
 package net.andrelson.meeting;
 
-import net.andrelson.meeting.exception.MeetingRoomReservationException;
+import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 public class MeetingRoom {
@@ -52,7 +51,7 @@ public class MeetingRoom {
 		meetings.put(start, participants);
 	}
 
-	public void removeMeeting(LocalDateTime meetingStart) throws MeetingRoomReservationException{
+	public void removeMeeting(LocalDateTime meetingStart) throws MeetingRoomReservationNotFoundException {
 		meetings.remove(meetingStart);
 	}
 	public MeetingType getMeetingType() {
