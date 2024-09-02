@@ -1,16 +1,16 @@
 package net.andrelson.meeting;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import net.andrelson.meeting.exception.MeetingRoomAlreadyExists;
+import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 import net.andrelson.meeting.exception.UnvailableBookingException;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class MeetingRoomManagerImpl implements MeetingManager {
 	
 	private List<MeetingRoom> meetingRooms;
@@ -20,9 +20,9 @@ public class MeetingRoomManagerImpl implements MeetingManager {
 	}
 
 	@Override
-	public void addMeetingRoom(MeetingRoom meetingRoom) throws MeetingRoomAlreadyExists {
+	public void addMeetingRoom(MeetingRoom meetingRoom) throws MeetingRoomAlreadyExistsException {
 		if(meetingRooms.contains(meetingRoom)){
-			throw new MeetingRoomAlreadyExists("The meeting room number: " + meetingRoom.getMeetingRoomNumber() + "already exists");
+			throw new MeetingRoomAlreadyExistsException("The meeting room number: " + meetingRoom.getMeetingRoomNumber() + "already exists");
 		}
 		meetingRooms.add(meetingRoom);
 	}
