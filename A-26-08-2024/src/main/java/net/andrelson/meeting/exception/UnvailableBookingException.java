@@ -1,6 +1,6 @@
 package net.andrelson.meeting.exception;
 
-public class UnvailableBookingException extends Throwable{
+public class UnvailableBookingException extends RuntimeException{
 
 	public UnvailableBookingException() {
 		super();

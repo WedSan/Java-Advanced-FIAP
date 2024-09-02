@@ -1,6 +1,6 @@
 package net.andrelson.meeting.exception;
 
-public class MeetingRoomAlreadyExistsException extends Exception {
+public class MeetingRoomAlreadyExistsException extends RuntimeException {
 
     public MeetingRoomAlreadyExistsException() {
     }
