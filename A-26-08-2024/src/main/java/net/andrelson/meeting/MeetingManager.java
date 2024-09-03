@@ -16,6 +16,12 @@ public interface MeetingManager {
 	MeetingRoom bookMeetingRoom(LocalDateTime bookingDate, Set<String> meetingParticipants, MeetingType meetingType) throws UnvailableBookingException ;
 	
 	void cancelBookMeetingRoom(MeetingRoom meetingRoom, LocalDateTime cancelDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException;
-	
+
+	void cancelBookMeetingRoom(int meetingRoomNumber, LocalDateTime cancelDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException;
+
+	void editReservation(int meetingRoomNumber, LocalDateTime oldDate, LocalDateTime newDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException;
+
 	List<MeetingRoom> getMeetingsRooms();
+
+	MeetingRoom getMeetingRoom(int meetingRoomNumber) throws MeetingRoomNotFoundException;
 }

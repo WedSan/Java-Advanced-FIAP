@@ -54,10 +54,30 @@ public class MeetingRoomManagerImpl implements MeetingManager {
 	}
 
 	@Override
+	public void cancelBookMeetingRoom(int MeetingRoomNumber, LocalDateTime cancelDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
+		MeetingRoom meetingRoom = meetingRooms.stream()
+				.filter(mr -> mr.getMeetingRoomNumber() == MeetingRoomNumber)
+				.findFirst()
+				.orElseThrow(()-> new MeetingRoomNotFoundException("The meeting room number: " + MeetingRoomNumber + "does not exist"));
+
+		meetingRoom.removeMeeting(cancelDate);
+	}
+
+	@Override
+	public void editReservation(int meetingRoomNumber, LocalDateTime oldDate, LocalDateTime newDate)  throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
+
+	}
+
+	@Override
 	public List<MeetingRoom> getMeetingsRooms() {
 		return meetingRooms;
 	}
-	
-	
-	
+
+	@Override
+	public MeetingRoom getMeetingRoom(int meetingRoomNumber) throws MeetingRoomNotFoundException {
+		return meetingRooms.stream()
+				.filter(meetingRoom -> meetingRoom.getMeetingRoomNumber() == meetingRoomNumber)
+				.findFirst()
+				.orElseThrow(()-> new MeetingRoomNotFoundException("The meeting room number: " + meetingRoomNumber + "does not exist"));
+	}
 }
