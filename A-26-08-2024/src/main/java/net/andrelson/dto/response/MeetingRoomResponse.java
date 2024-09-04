@@ -1,7 +1,7 @@
 package net.andrelson.dto.response;
 
-import net.andrelson.meeting.MeetingRoom;
-import net.andrelson.meeting.MeetingType;
+import net.andrelson.meeting.model.MeetingRoom;
+import net.andrelson.meeting.model.MeetingType;
 
 import java.time.LocalDateTime;
 import java.util.Map;

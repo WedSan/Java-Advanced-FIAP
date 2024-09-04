@@ -2,12 +2,9 @@ package net.andrelson.mapper;
 
 import net.andrelson.dto.request.MeetingRoomCreationRequest;
 import net.andrelson.dto.response.MeetingRoomResponse;
-import net.andrelson.meeting.MeetingRoom;
+import net.andrelson.meeting.model.MeetingRoom;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class MeetingRoomMapper {
     public static MeetingRoom toDomain(MeetingRoomCreationRequest dto){

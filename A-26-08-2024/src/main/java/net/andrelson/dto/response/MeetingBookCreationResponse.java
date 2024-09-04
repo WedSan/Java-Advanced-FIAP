@@ -1,6 +1,6 @@
 package net.andrelson.dto.response;
 
-import net.andrelson.meeting.MeetingType;
+import net.andrelson.meeting.model.MeetingType;
 
 import java.time.LocalDateTime;
 import java.util.Set;
