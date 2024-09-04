@@ -1,4 +1,4 @@
-package net.andrelson.meeting;
+package net.andrelson.meeting.service;
 
 import java.util.List;
 

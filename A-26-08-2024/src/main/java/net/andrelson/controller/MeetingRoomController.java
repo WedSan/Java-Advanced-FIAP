@@ -3,7 +3,7 @@ package net.andrelson.controller;
 import net.andrelson.dto.request.MeetingRoomCreationRequest;
 import net.andrelson.dto.response.MeetingRoomResponse;
 import net.andrelson.mapper.MeetingRoomMapper;
-import net.andrelson.meeting.MeetingManager;
+import net.andrelson.meeting.service.MeetingManager;
 import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

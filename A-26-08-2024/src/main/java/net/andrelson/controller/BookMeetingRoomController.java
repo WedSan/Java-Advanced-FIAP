@@ -5,7 +5,7 @@ import net.andrelson.dto.request.EditReservationDateRequest;
 import net.andrelson.dto.request.MeetingRoomBookingRequest;
 import net.andrelson.dto.response.EditReservationDateResponse;
 import net.andrelson.dto.response.MeetingRoomResponse;
-import net.andrelson.meeting.BookingManager;
+import net.andrelson.meeting.service.BookingManager;
 import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

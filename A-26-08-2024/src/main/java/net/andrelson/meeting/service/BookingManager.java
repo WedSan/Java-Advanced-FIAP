@@ -1,4 +1,4 @@
-package net.andrelson.meeting;
+package net.andrelson.meeting.service;
 
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
