@@ -3,10 +3,10 @@ package net.andrelson.controller;
 import net.andrelson.dto.request.CancelReservationRequest;
 import net.andrelson.dto.request.EditReservationDateRequest;
 import net.andrelson.dto.request.MeetingRoomBookingRequest;
-import net.andrelson.dto.response.EditReservationResponse;
+import net.andrelson.dto.response.EditReservationDateResponse;
 import net.andrelson.dto.response.MeetingRoomResponse;
-import net.andrelson.meeting.MeetingManager;
-import net.andrelson.meeting.MeetingRoom;
+import net.andrelson.meeting.BookingManager;
+import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,16 +17,16 @@ import java.util.Map;
 @RequestMapping("meetingRoom/book")
 public class BookMeetingRoomController {
 
-    private MeetingManager meetingRoomManager;
+    private BookingManager bookingManager;
 
-    public BookMeetingRoomController(MeetingManager meetingRoomManager) {
-        this.meetingRoomManager = meetingRoomManager;
+    public BookMeetingRoomController(BookingManager bookingManager) {
+        this.bookingManager = bookingManager;
     }
 
     @PostMapping
     public ResponseEntity<MeetingRoomResponse> bookMeetingRoom(@RequestBody MeetingRoomBookingRequest meetingRoomBookingRequest) {
 
-        MeetingRoom bookedMeetingRoom = meetingRoomManager.bookMeetingRoom(meetingRoomBookingRequest.meetingDate(),
+        MeetingRoom bookedMeetingRoom = bookingManager.bookMeetingRoom(meetingRoomBookingRequest.meetingDate(),
                 meetingRoomBookingRequest.participantsName(),
                 meetingRoomBookingRequest.meetingType());
 
@@ -38,15 +38,14 @@ public class BookMeetingRoomController {
     }
 
     @PatchMapping("/{meetingRoomNumber}")
-    public ResponseEntity<EditReservationResponse> editReservationDate(@PathVariable int meetingRoomNumber,
-                                                                       @RequestBody EditReservationDateRequest editReservationDateRequest){
-        MeetingRoom meetingRoom = meetingRoomManager.getMeetingRoom(meetingRoomNumber);
+    public ResponseEntity<EditReservationDateResponse> editReservationDate(@PathVariable int meetingRoomNumber,
+                                                                           @RequestBody EditReservationDateRequest editReservationDateRequest){
 
-        meetingRoomManager.bookMeetingRoom(editReservationDateRequest.newReservationDate(),
-                meetingRoom.getMeetings().get(editReservationDateRequest.oldReservationDate()),
-                meetingRoom.getMeetingType());
+        MeetingRoom meetingRoom = bookingManager.editReservation(meetingRoomNumber,
+                editReservationDateRequest.oldReservationDate(),
+                editReservationDateRequest.newReservationDate());
 
-        meetingRoom.removeMeeting(editReservationDateRequest.oldReservationDate());
+        EditReservationDateResponse response = new EditReservationDateResponse();
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
@@ -55,7 +54,7 @@ public class BookMeetingRoomController {
     public ResponseEntity<Void> cancelReservation(@PathVariable int meetingRoomNumber,
                                                   @RequestBody CancelReservationRequest cancelReservationRequest) {
 
-        meetingRoomManager.cancelBookMeetingRoom(meetingRoomNumber, cancelReservationRequest.cancelDate());
+        bookingManager.cancelBookMeetingRoom(meetingRoomNumber, cancelReservationRequest.cancelDate());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
