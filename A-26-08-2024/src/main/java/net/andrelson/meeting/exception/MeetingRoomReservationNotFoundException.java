@@ -1,6 +1,6 @@
 package net.andrelson.meeting.exception;
 
-public class MeetingRoomReservationNotFoundException extends Exception{
+public class MeetingRoomReservationNotFoundException extends RuntimeException{
     public MeetingRoomReservationNotFoundException() {
     }
 

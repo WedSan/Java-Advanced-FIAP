@@ -1,4 +1,4 @@
-package net.andrelson.meeting;
+package net.andrelson.meeting.model;
 
 public enum MeetingType {
 	 SMALL,

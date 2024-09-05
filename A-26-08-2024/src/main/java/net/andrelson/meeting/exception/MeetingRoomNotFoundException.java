@@ -1,6 +1,6 @@
 package net.andrelson.meeting.exception;
 
-public class MeetingRoomNotFoundException extends Throwable{
+public class MeetingRoomNotFoundException extends RuntimeException {
 
 	public MeetingRoomNotFoundException() {
 		super();
