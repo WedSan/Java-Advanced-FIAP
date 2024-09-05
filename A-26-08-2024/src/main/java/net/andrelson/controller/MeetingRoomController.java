@@ -22,10 +22,11 @@ public class MeetingRoomController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addMeetingRoom(@RequestBody MeetingRoomCreationRequest meetingRoomCreationRequest) {
+    public ResponseEntity<MeetingRoomResponse> addMeetingRoom(@RequestBody MeetingRoomCreationRequest meetingRoomCreationRequest) {
         MeetingRoom meetingRoom = MeetingRoomMapper.toDomain(meetingRoomCreationRequest);
         meetingRoomManager.addMeetingRoom(meetingRoom);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        MeetingRoomResponse response = MeetingRoomMapper.toResponse(meetingRoom);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping
