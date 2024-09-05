@@ -34,18 +34,6 @@ public class BookingManagerImpl implements BookingManager{
     }
 
     @Override
-    public void cancelBookMeetingRoom(MeetingRoom meetingRoom, LocalDateTime bookingDate)
-            throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
-        MeetingRoom meetingRoomToCancelBook = meetingManager.getMeetingsRooms()
-                .stream()
-                .filter(mr -> mr.equals(meetingRoom))
-                .findFirst()
-                .orElseThrow(()-> new MeetingRoomNotFoundException());
-
-        meetingRoomToCancelBook.removeMeeting(bookingDate);
-    }
-
-    @Override
     public void cancelBookMeetingRoom(int MeetingRoomNumber, LocalDateTime cancelDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
         MeetingRoom meetingRoom = meetingManager.getMeetingsRooms()
                 .stream()
