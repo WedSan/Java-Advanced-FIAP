@@ -1,4 +1,4 @@
-package net.andrelson.controller;
+package net.andrelson.controller.exceptionHandler;
 
 import net.andrelson.dto.response.error.ErrorResponse;
 import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
