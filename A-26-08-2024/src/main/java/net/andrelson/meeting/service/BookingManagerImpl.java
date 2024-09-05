@@ -11,17 +11,20 @@ import java.util.Set;
 
 public class BookingManagerImpl implements BookingManager{
 
-    private final MeetingManager meetingManager;
+    private final MeetingRoomManager meetingRoomManager;
 
-    public BookingManagerImpl(MeetingManager meetingManager) {
-        this.meetingManager = meetingManager;
+    private final ReservationValidator reservationValidator;
+
+    public BookingManagerImpl(MeetingRoomManager meetingRoomManager, ReservationValidator reservationValidator) {
+        this.meetingRoomManager = meetingRoomManager;
+        this.reservationValidator = reservationValidator;
     }
 
     @Override
     public MeetingRoom bookMeetingRoom(LocalDateTime bookingDate, Set<String> meetingParticipants,
                                        MeetingType meetingType) throws UnvailableBookingException {
 
-        MeetingRoom meetingRoomAvailable = meetingManager.getMeetingsRooms()
+        MeetingRoom meetingRoomAvailable = meetingRoomManager.getMeetingsRooms()
                 .stream()
                 .filter(m -> m.getMeetingType().equals(meetingType))
                 .filter(m -> m.getMeetings().keySet().stream()
@@ -35,7 +38,7 @@ public class BookingManagerImpl implements BookingManager{
 
     @Override
     public void cancelBookMeetingRoom(int MeetingRoomNumber, LocalDateTime cancelDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
-        MeetingRoom meetingRoom = meetingManager.getMeetingsRooms()
+        MeetingRoom meetingRoom = meetingRoomManager.getMeetingsRooms()
                 .stream()
                 .filter(mr -> mr.getMeetingRoomNumber() == MeetingRoomNumber)
                 .findFirst()
@@ -46,28 +49,19 @@ public class BookingManagerImpl implements BookingManager{
 
     @Override
     public MeetingRoom editReservation(int meetingRoomNumber, LocalDateTime oldDate, LocalDateTime newDate)  throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException {
-        MeetingRoom meetingRoom = meetingManager.getMeetingRoom(meetingRoomNumber);
+        MeetingRoom meetingRoom = meetingRoomManager.getMeetingRoom(meetingRoomNumber);
 
-        if(!checkDateReservationExists(meetingRoomNumber, oldDate))
+        if(!reservationValidator.doesReservationExist(meetingRoomNumber, oldDate))
             throw new MeetingRoomReservationNotFoundException("The reservation doesn't exist");
 
-        if(checkDateReservationExists(meetingRoomNumber, newDate))
+        if(reservationValidator.doesReservationExist(meetingRoomNumber, newDate))
             throw new UnvailableBookingException("The reservation already exists");
-
 
         Set<String> participantsFromOldDate = meetingRoom.getMeetings().get(oldDate);
         meetingRoom.addMeeting(newDate, participantsFromOldDate);
 
-        cancelBookMeetingRoom(meetingRoomNumber, oldDate);
+        meetingRoom.removeMeeting(oldDate);
 
         return meetingRoom;
-    }
-
-    private boolean checkDateReservationExists(int meetingRoomNumber, LocalDateTime date) {
-         return meetingManager.getMeetingRoom(meetingRoomNumber)
-                 .getMeetings()
-                 .keySet()
-                 .stream()
-                 .anyMatch(t -> t.isEqual(date));
     }
 }

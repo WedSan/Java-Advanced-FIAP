@@ -8,7 +8,7 @@ import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeetingRoomManagerImpl implements MeetingManager {
+public class MeetingRoomManagerImpl implements MeetingRoomManager {
 	
 	private List<MeetingRoom> meetingRooms;
 

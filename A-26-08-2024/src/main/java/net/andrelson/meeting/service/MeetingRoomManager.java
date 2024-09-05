@@ -6,7 +6,7 @@ import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.model.MeetingRoom;
 
-public interface MeetingManager {
+public interface MeetingRoomManager {
 
 	void addMeetingRoom(MeetingRoom meetingRoom) throws MeetingRoomAlreadyExistsException;
 
