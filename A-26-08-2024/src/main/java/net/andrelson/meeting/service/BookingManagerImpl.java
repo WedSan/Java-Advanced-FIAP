@@ -5,10 +5,13 @@ import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 import net.andrelson.meeting.exception.UnvailableBookingException;
 import net.andrelson.meeting.model.MeetingRoom;
 import net.andrelson.meeting.model.MeetingType;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
+
+@Service
 public class BookingManagerImpl implements BookingManager{
 
     private final MeetingRoomManager meetingRoomManager;

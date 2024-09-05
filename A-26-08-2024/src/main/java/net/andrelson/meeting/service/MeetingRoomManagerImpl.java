@@ -6,8 +6,9 @@ import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class MeetingRoomManagerImpl implements MeetingRoomManager {
 	
 	private List<MeetingRoom> meetingRooms;

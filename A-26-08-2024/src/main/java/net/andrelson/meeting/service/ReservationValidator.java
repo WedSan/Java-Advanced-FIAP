@@ -1,7 +1,10 @@
 package net.andrelson.meeting.service;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 
+@Component
 public class ReservationValidator {
 
     private MeetingRoomManager meetingManager;
