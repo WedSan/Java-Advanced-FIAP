@@ -7,13 +7,13 @@ import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
 import net.andrelson.meeting.exception.MeetingRoomReservationNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class MeetingRoomExceptionHandler {
 
     @ExceptionHandler(MeetingRoomAlreadyExistsException.class)
@@ -30,7 +30,7 @@ public class MeetingRoomExceptionHandler {
     }
 
     @ExceptionHandler({MeetingRoomNotFoundException.class, MeetingRoomReservationNotFoundException.class})
-    public ResponseEntity<ErrorResponse> handleMeetingRoomNotFoundException(Exception ex,
+    public ResponseEntity<ErrorResponse> handleMeetingRoomNotFoundException(RuntimeException ex,
                                                                             WebRequest request){
         ErrorResponse errorResponse = ErrorResponseFactory.createErrorResponse(
                 HttpStatus.NOT_FOUND,
