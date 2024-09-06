@@ -14,7 +14,7 @@ public class ErrorResponseFactory {
                 status.value(),
                 error,
                 message,
-                request.getContextPath().substring(4)
+                request.getDescription(false).replace("uri=", "")
         );
     }
 }
