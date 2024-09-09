@@ -1,6 +1,7 @@
 package net.andrelson.meeting.service;
 
 import java.util.List;
+import java.util.Map;
 
 import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
@@ -13,4 +14,6 @@ public interface MeetingRoomManager {
 	List<MeetingRoom> getMeetingsRooms();
 
 	MeetingRoom getMeetingRoom(int meetingRoomNumber) throws MeetingRoomNotFoundException;
+
+	Map<MeetingRoom, Integer> mapTotalParticipants();
 }
