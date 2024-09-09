@@ -4,12 +4,20 @@ import net.andrelson.dto.request.CancelReservationRequest;
 import net.andrelson.dto.request.EditReservationDateRequest;
 import net.andrelson.dto.request.MeetingRoomBookingRequest;
 import net.andrelson.dto.response.MeetingRoomResponse;
+import net.andrelson.dto.response.MeetingsResponse;
+import net.andrelson.dto.response.TotalMeetingsResponse;
+import net.andrelson.mapper.BookingMapper;
 import net.andrelson.mapper.MeetingRoomMapper;
 import net.andrelson.meeting.service.BookingManager;
 import net.andrelson.meeting.model.MeetingRoom;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("meetingRoom/book")
@@ -19,6 +27,19 @@ public class BookMeetingRoomController {
 
     public BookMeetingRoomController(BookingManager bookingManager) {
         this.bookingManager = bookingManager;
+    }
+
+    @GetMapping("/total_books")
+    public ResponseEntity<TotalMeetingsResponse> getAllMeetings(){
+        int totalMeetings = bookingManager.getAllMeetings();
+        return ResponseEntity.status(HttpStatus.OK).body(new TotalMeetingsResponse(totalMeetings));
+    }
+
+    @GetMapping("/{meetingRoomNumber}")
+    public ResponseEntity<List<MeetingsResponse>> getReservations(@PathVariable("meetingRoomNumber") int meetingRomNumber) {
+        Map<LocalDateTime, Set<String>> meetings = bookingManager.getMeetings(meetingRomNumber);
+        List<MeetingsResponse> meetingsResponses = BookingMapper.toMeetingsResponse(meetings);
+        return ResponseEntity.status(HttpStatus.OK).body(meetingsResponses);
     }
 
     @PostMapping

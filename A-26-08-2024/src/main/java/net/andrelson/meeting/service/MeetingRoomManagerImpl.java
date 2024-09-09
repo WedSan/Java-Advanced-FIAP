@@ -1,6 +1,9 @@
 package net.andrelson.meeting.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import net.andrelson.meeting.exception.MeetingRoomAlreadyExistsException;
 import net.andrelson.meeting.exception.MeetingRoomNotFoundException;
@@ -36,5 +39,15 @@ public class MeetingRoomManagerImpl implements MeetingRoomManager {
 				.filter(meetingRoom -> meetingRoom.getMeetingRoomNumber() == meetingRoomNumber)
 				.findFirst()
 				.orElseThrow(()-> new MeetingRoomNotFoundException("The meeting room number: " + meetingRoomNumber + "does not exist"));
+	}
+
+	@Override
+	public Map<MeetingRoom, Integer> mapTotalParticipants(){
+		return meetingRooms.stream()
+				.collect(Collectors.toMap(meetingRoom -> meetingRoom,
+										  meetingRoom -> meetingRoom.getMeetings().values()
+												  .stream()
+												  .mapToInt(value -> value.size())
+												  .sum()));
 	}
 }

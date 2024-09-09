@@ -7,8 +7,12 @@ import net.andrelson.meeting.model.MeetingRoom;
 import net.andrelson.meeting.model.MeetingType;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 @Service
@@ -21,6 +25,22 @@ public class BookingManagerImpl implements BookingManager{
     public BookingManagerImpl(MeetingRoomManager meetingRoomManager, ReservationValidator reservationValidator) {
         this.meetingRoomManager = meetingRoomManager;
         this.reservationValidator = reservationValidator;
+    }
+
+    @Override
+    public int getAllMeetings() {
+        return meetingRoomManager.getMeetingsRooms()
+                .stream()
+                .mapToInt(value -> value.getMeetings().size())
+                .sum();
+    }
+
+    @Override
+    public Map<LocalDateTime, Set<String>> getMeetings(int meetingRoomNumber) {
+        Map<LocalDateTime, Set<String>> meetings = meetingRoomManager.getMeetingRoom(meetingRoomNumber)
+                .getMeetings();
+
+        return new TreeMap<LocalDateTime, Set<String>>(meetings);
     }
 
     @Override
