@@ -7,6 +7,8 @@ import net.andrelson.meeting.model.MeetingRoom;
 import net.andrelson.meeting.model.MeetingType;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface BookingManager {
@@ -16,4 +18,5 @@ public interface BookingManager {
 
     MeetingRoom editReservation(int meetingRoomNumber, LocalDateTime oldDate, LocalDateTime newDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException;
 
+    Map<LocalDateTime, Set<String>> getMeetings(int meetingRoomNumber);
 }
