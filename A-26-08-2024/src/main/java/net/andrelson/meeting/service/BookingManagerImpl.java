@@ -28,6 +28,14 @@ public class BookingManagerImpl implements BookingManager{
     }
 
     @Override
+    public int getAllMeetings() {
+        return meetingRoomManager.getMeetingsRooms()
+                .stream()
+                .mapToInt(value -> value.getMeetings().size())
+                .sum();
+    }
+
+    @Override
     public Map<LocalDateTime, Set<String>> getMeetings(int meetingRoomNumber) {
         Map<LocalDateTime, Set<String>> meetings = meetingRoomManager.getMeetingRoom(meetingRoomNumber)
                 .getMeetings();

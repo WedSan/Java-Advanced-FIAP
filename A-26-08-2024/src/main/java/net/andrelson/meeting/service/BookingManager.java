@@ -19,4 +19,6 @@ public interface BookingManager {
     MeetingRoom editReservation(int meetingRoomNumber, LocalDateTime oldDate, LocalDateTime newDate) throws MeetingRoomNotFoundException, MeetingRoomReservationNotFoundException;
 
     Map<LocalDateTime, Set<String>> getMeetings(int meetingRoomNumber);
+
+    int getAllMeetings();
 }
