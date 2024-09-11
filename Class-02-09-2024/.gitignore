@@ -35,8 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-# Gradle Wrapper
-.gradle/
-/gradle/wrapper/gradle-wrapper.jar
-
