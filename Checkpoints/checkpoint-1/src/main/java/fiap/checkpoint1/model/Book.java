@@ -17,6 +17,14 @@ public class Book {
         this.category = category;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return this.isbn.equals(book.getIsbn());
+    }
+
     public String getName() {
         return name;
     }
