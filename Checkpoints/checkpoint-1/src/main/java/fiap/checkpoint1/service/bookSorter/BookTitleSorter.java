@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class BookTitleSorter implements BookSorter {
+
+public class BookTitleSorter extends AbstractBookSorter implements BookSorter {
     public BookTitleSorter() {
     }
 
     @Override
-    public List<Book> sortBooks(List<Book> books) {
-        List<Book> booksOrdered = new ArrayList<>(books);
-        booksOrdered.sort(Comparator.comparing(book -> book.getName()));
-        return booksOrdered;
+    protected Comparator<Book> getComparator() {
+        return Comparator.comparing(book -> book.getName());
     }
+
 }
