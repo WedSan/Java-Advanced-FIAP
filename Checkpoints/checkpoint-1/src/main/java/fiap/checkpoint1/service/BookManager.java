@@ -14,7 +14,7 @@ public interface BookManager {
 
     Book findBookByIsbn(String isbn);
 
-    void findBookByName(String bookName);
+    Book findBookByName(String bookName);
 
     void deleteBook(Book book);
 
