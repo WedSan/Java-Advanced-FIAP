@@ -58,8 +58,11 @@ public class BookManagerImpl implements BookManager{
     }
 
     @Override
-    public void findBookByName(String bookName) {
-        return;
+    public Book findBookByName(String bookName) {
+        return books.stream()
+                .filter(book -> book.getName().equals(bookName))
+                .findAny()
+                .orElseThrow(() -> new BookNotFoundException("The book " + bookName + " was not found"));
     }
 
     @Override
