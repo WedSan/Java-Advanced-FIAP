@@ -2,6 +2,7 @@ package fiap.checkpoint1.service;
 
 import fiap.checkpoint1.factory.BookSorterFactory;
 import fiap.checkpoint1.model.Book;
+import fiap.checkpoint1.model.exception.BookNotFoundException;
 import fiap.checkpoint1.service.validator.BookCreationValidator;
 import fiap.checkpoint1.service.validator.BookListValidator;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,10 @@ public class BookManagerImpl implements BookManager{
 
     @Override
     public Book findBookByIsbn(String isbn) {
-        return null;
+        return books.stream()
+                .filter(book -> book.getIsbn().equals(isbn))
+                .findAny()
+                .orElseThrow(() -> new BookNotFoundException("Book with isbn " + isbn + " was not found"));
     }
 
     @Override
