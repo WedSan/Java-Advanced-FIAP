@@ -1,5 +1,6 @@
 package fiap.checkpoint1.service;
 
+import fiap.checkpoint1.factory.BookSorterFactory;
 import fiap.checkpoint1.model.Book;
 import fiap.checkpoint1.service.validator.BookCreationValidator;
 import fiap.checkpoint1.service.validator.BookListValidator;
@@ -17,8 +18,12 @@ public class BookManagerImpl implements BookManager{
 
     private BookListValidator bookListValidator;
 
+    private BookSorterFactory bookSorterFactory;
+
+
     public BookManagerImpl(BookCreationValidator bookCreationValidator,
-                           BookListValidator bookListValidator) {
+                           BookListValidator bookListValidator, BookSorterFactory bookSorterFactory) {
+        this.bookSorterFactory = bookSorterFactory;
         this.books = new ArrayList<>();
         this.bookCreationValidator = bookCreationValidator;
         this.bookListValidator = bookListValidator;
@@ -39,7 +44,8 @@ public class BookManagerImpl implements BookManager{
 
     @Override
     public List<Book> listBooks(BookSortOption bookSortOption) {
-        return List.of();
+        BookSorter bookSorter = bookSorterFactory.createBookSorter(bookSortOption);
+        return bookSorter.sortBooks(books);
     }
 
     @Override
