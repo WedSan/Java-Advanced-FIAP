@@ -2,9 +2,7 @@ package fiap.checkpoint1.exceptionHandler;
 
 import fiap.checkpoint1.dto.error.ErrorResponseDTO;
 import fiap.checkpoint1.exception.*;
-import fiap.checkpoint1.exception.exceptionHandler.exception.*;
 import fiap.checkpoint1.mapper.ErrorMapper;
-import fiap.checkpoint1.model.exception.*;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
