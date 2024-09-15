@@ -21,4 +21,16 @@ public class BookReservation {
         this.book = book;
         this.reservationDate = reservationDate;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public LocalDateTime getReservationDate() {
+        return reservationDate;
+    }
 }
