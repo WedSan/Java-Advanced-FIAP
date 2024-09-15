@@ -8,10 +8,14 @@ import fiap.checkpoint1.service.validator.BookListValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BookManagerImpl implements BookManager{
+
+    private Map<Book, Integer> bookStock;
 
     private List<Book> books;
 
@@ -24,8 +28,9 @@ public class BookManagerImpl implements BookManager{
 
     public BookManagerImpl(BookCreationValidator bookCreationValidator,
                            BookListValidator bookListValidator, BookSorterFactory bookSorterFactory) {
-        this.bookSorterFactory = bookSorterFactory;
+        this.bookStock = new HashMap<>();
         this.books = new ArrayList<>();
+        this.bookSorterFactory = bookSorterFactory;
         this.bookCreationValidator = bookCreationValidator;
         this.bookListValidator = bookListValidator;
     }
@@ -33,9 +38,14 @@ public class BookManagerImpl implements BookManager{
     @Override
     public void addBook(Book book) {
         bookCreationValidator.validate(book);
-        bookListValidator.validate(books, book);
 
-        books.add(book);
+        if(books.contains(book)){
+            bookStock.put(book, bookStock.get(book) + 1);
+        }
+        else{
+            books.add(book);
+            bookStock.put(book, 1);
+        }
     }
 
     @Override
@@ -67,6 +77,6 @@ public class BookManagerImpl implements BookManager{
 
     @Override
     public void deleteBook(Book book) {
-        return;
+        return qwerrqwrqerqewrqwerwq;
     }
 }
