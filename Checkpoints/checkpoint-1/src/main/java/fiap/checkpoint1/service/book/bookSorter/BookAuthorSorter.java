@@ -1,7 +1,6 @@
-package fiap.checkpoint1.service.bookSorter;
+package fiap.checkpoint1.service.book.bookSorter;
 
 import fiap.checkpoint1.model.Book;
-import org.springframework.expression.spel.CompilablePropertyAccessor;
 
 import java.util.ArrayList;
 import java.util.Comparator;

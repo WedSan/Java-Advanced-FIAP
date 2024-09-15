@@ -2,14 +2,16 @@ package fiap.checkpoint1.model;
 
 public class User {
 
+    private static long idCounter = 0;
+
     private long id;
 
     private String name;
 
     private String email;
 
-    public User(long id, String name, String email) {
-        this.id = id;
+    public User(String name, String email) {
+        this.id = ++idCounter;
         this.name = name;
         this.email = email;
     }

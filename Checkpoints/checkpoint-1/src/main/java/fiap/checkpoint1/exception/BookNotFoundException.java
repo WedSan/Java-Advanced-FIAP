@@ -1,4 +1,4 @@
-package fiap.checkpoint1.model.exception;
+package fiap.checkpoint1.exception;
 
 public class BookNotFoundException extends RuntimeException{
     public BookNotFoundException() {

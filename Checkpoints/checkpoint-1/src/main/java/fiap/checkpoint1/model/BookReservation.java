@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 public class BookReservation {
 
+    private static long idCounter = 0;
+
+    private long id;
+
     private User user;
 
     private Book book;
@@ -11,6 +15,7 @@ public class BookReservation {
     private LocalDateTime reservationDate;
 
     public BookReservation(User user, Book book) {
+        this.id = ++idCounter;
         this.user = user;
         this.book = book;
         this.reservationDate = LocalDateTime.now();
@@ -20,6 +25,10 @@ public class BookReservation {
         this.user = user;
         this.book = book;
         this.reservationDate = reservationDate;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public User getUser() {
@@ -32,5 +41,9 @@ public class BookReservation {
 
     public LocalDateTime getReservationDate() {
         return reservationDate;
+    }
+
+    public void setReservationDate(LocalDateTime reservationDate) {
+        this.reservationDate = reservationDate;
     }
 }

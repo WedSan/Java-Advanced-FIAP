@@ -1,10 +1,10 @@
 package fiap.checkpoint1.factory;
 
-import fiap.checkpoint1.service.BookSortOption;
-import fiap.checkpoint1.service.BookSorter;
-import fiap.checkpoint1.service.bookSorter.BookAuthorSorter;
-import fiap.checkpoint1.service.bookSorter.BookCategorySorter;
-import fiap.checkpoint1.service.bookSorter.BookTitleSorter;
+import fiap.checkpoint1.service.book.bookSorter.BookSortOption;
+import fiap.checkpoint1.service.book.bookSorter.BookSorter;
+import fiap.checkpoint1.service.book.bookSorter.BookAuthorSorter;
+import fiap.checkpoint1.service.book.bookSorter.BookCategorySorter;
+import fiap.checkpoint1.service.book.bookSorter.BookTitleSorter;
 import org.springframework.stereotype.Component;
 
 @Component

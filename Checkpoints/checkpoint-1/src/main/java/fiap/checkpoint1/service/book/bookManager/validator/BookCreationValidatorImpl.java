@@ -1,7 +1,7 @@
-package fiap.checkpoint1.service.validator;
+package fiap.checkpoint1.service.book.bookManager.validator;
 
 import fiap.checkpoint1.model.Book;
-import fiap.checkpoint1.model.exception.InvalidBookAttributeException;
+import fiap.checkpoint1.exception.InvalidBookAttributeException;
 import org.springframework.stereotype.Component;
 
 @Component

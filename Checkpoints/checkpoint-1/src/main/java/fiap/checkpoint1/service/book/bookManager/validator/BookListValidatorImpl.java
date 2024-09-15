@@ -1,7 +1,7 @@
-package fiap.checkpoint1.service.validator;
+package fiap.checkpoint1.service.book.bookManager.validator;
 
 import fiap.checkpoint1.model.Book;
-import fiap.checkpoint1.model.exception.BookAlreadyExistsException;
+import fiap.checkpoint1.exception.BookAlreadyExistsException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

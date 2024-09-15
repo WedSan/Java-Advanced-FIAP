@@ -1,11 +1,8 @@
-package fiap.checkpoint1.service.bookSorter;
+package fiap.checkpoint1.service.book.bookSorter;
 
 import fiap.checkpoint1.model.Book;
-import fiap.checkpoint1.service.BookSorter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 
 public class BookTitleSorter extends AbstractBookSorter implements BookSorter {

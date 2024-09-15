@@ -1,4 +1,4 @@
-package fiap.checkpoint1.service.validator;
+package fiap.checkpoint1.service.book.bookManager.validator;
 
 import fiap.checkpoint1.model.Book;
 
