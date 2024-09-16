@@ -1,0 +1,128 @@
+Create Book:
+
+
+
+curl -X POST http://localhost:8080/api/v1/book \
+-H "Content-Type: application/json" \
+-d '{ "name": "The Call of Cthulhu", "author": "Howard Phillips", "isbn": "978-1568824307", "category": "Fiction" }'
+
+Get All Books:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book
+
+Get All Books Ordered by Author:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book?sortBy=author
+
+Get Book by Name:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book/search?book_name=The%20Call%20of%20Cthulhu
+
+Get Book by ISBN:
+
+
+curl -X GET http://localhost:8080/api/v1/book/978-1568824307
+
+Delete Book:
+
+
+
+curl -X DELETE http://localhost:8080/api/v1/book/978-1568824307
+
+Filter Books by Category:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book?category=fiction
+
+Count Book:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book_stock/count?book_name=The%20Call%20of%20Cthulhu
+
+Increase Book Quantity:
+
+
+
+curl -X PATCH http://localhost:8080/api/v1/book_stock/978-1568824307/increase \
+-H "Content-Type: application/json" \
+-d '{ "quantity": 1 }'
+
+Decrease Book Quantity:
+
+
+
+curl -X PATCH http://localhost:8080/api/v1/book_stock/978-1568824307/reduce \
+-H "Content-Type: application/json" \
+-d '{ "quantity": 1 }'
+
+Reserve Book:
+
+
+
+curl -X POST http://localhost:8080/api/v1/book/reservation \
+-H "Content-Type: application/json" \
+-d '{ "bookTitle": "The Call of Cthulhu", "userId": 1 }'
+
+Get All Reservations:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book/reservation
+
+Get All Reservations by User ID:
+
+
+
+curl -X GET http://localhost:8080/api/v1/book/reservation?user_id=1
+
+Cancel Book Reservation:
+
+
+
+curl -X DELETE http://localhost:8080/api/v1/user/1/reservation/The%20Call%20of%20Cthulhu
+
+Create User:
+
+
+
+curl -X POST http://localhost:8080/api/v1/user \
+-H "Content-Type: application/json" \
+-d '{ "name": "John Doe", "email": "john.doe@gmail.com" }'
+
+Find User by ID:
+
+
+
+curl -X GET http://localhost:8080/api/v1/user/1
+
+Get User Waiting List:
+
+
+
+curl -X GET http://localhost:8080/api/v1/user/1/waiting_list
+
+Get All Reservation in Waiting List:
+
+
+
+curl -X GET http://localhost:8080/api/v1/waiting_list
+
+Cancel Reservation in Waiting List:
+
+
+
+curl -X DELETE http://localhost:8080/api/v1/user/1/waiting_list
+
+Get Reservation in Waiting List by Book Name:
+
+
+
+curl -X GET http://localhost:8080/api/v1/waiting_list?book_name=The%20Call%20of%20Cthulhu
