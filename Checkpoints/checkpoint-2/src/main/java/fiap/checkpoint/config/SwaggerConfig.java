@@ -12,7 +12,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public")
-                .packagesToScan("fiap.checkpoint.controller")
+                .packagesToScan("fiap.checkpoint.Controller")
                 .build();
     }
 }
