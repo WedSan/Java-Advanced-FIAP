@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "2731b961-1d1c-478d-9d73-009e4eeb4e7c",
+		"name": "Java Poke APi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30230400"
+	},
+	"item": [
+		{
+			"name": "rest client random",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "rest template random",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pokemons/resttemplate/random",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pokemons",
+						"resttemplate",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/pokemons/openfeign/random",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pokemons/openfeign/random",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pokemons",
+						"openfeign",
+						"random"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
