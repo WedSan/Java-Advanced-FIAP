@@ -3,7 +3,7 @@
 Project to show the call external API's through libraries, like OpenFeign, Rest Client and Rest Template
 
 ## Tasks
-  Do endpoint that get a random pokemon ✅
+  Endpoint that retrieves a random Pokémon. ✅
 
 
 
