@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  postgre:
+    image: 'postgres:latest'
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+    networks:
+      - postgres-network
+networks:
+  postgres-network:
+    driver: bridge
