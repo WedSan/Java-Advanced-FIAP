@@ -48,7 +48,7 @@ public class BookMeetingRoomController {
         MeetingRoom bookedMeetingRoom = bookingManager.bookMeetingRoom(meetingRoomBookingRequest.meetingDate(),
                 meetingRoomBookingRequest.participantsName(),
                 meetingRoomBookingRequest.meetingType());
-
+        
         MeetingRoomResponse response = MeetingRoomMapper.toResponse(bookedMeetingRoom);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
