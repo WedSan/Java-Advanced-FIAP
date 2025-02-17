@@ -46,6 +46,7 @@ public class LibraryManagerImpl implements LibraryManager {
         }
 
         bookWaitingList.get(reservedBook).add(bookReservation);
+        
         return new BookReservationResult(bookReservation, "Book is not available, you are now in the waiting list", true);
     }
 

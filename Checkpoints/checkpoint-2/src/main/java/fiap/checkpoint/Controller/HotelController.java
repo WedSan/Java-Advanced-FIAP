@@ -28,6 +28,7 @@ public class HotelController {
 
     @GetMapping()
     public ResponseEntity<Page<HotelDTO>> listHotels(@RequestParam int page, @RequestParam int size) {
+
         return ResponseEntity.status(HttpStatus.OK).body(hotelService.listHotels(PageRequest.of(page, size)));
     }
 
