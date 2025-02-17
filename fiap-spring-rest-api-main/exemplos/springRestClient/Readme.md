@@ -18,5 +18,3 @@ Project to show the call external API's through libraries, like OpenFeign, Rest 
     Using Open Feign Libray
     {ServerUrl}:8080/pokemons/openfeign/random
 
-### How to run 
-
