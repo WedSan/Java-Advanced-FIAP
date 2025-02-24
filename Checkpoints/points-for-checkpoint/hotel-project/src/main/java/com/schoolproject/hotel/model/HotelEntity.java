@@ -1,21 +1,26 @@
 package com.schoolproject.hotel.model;
 
+import jakarta.persistence.*;
+
 @Entity
+@Table(name = "TB_HOTEL_PFP")
 public class HotelEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String address;
+    @OneToOne
+    private AddressEntity address;
 
     private int availableRooms;
 
     public HotelEntity() {
     }
 
-    public HotelEntity(Long id, String name, String address, int availableRooms) {
+    public HotelEntity(Long id, String name, AddressEntity address, int availableRooms) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -38,11 +43,11 @@ public class HotelEntity {
         this.name = name;
     }
 
-    public String getAddress() {
+    public AddressEntity getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(AddressEntity address) {
         this.address = address;
     }
 
