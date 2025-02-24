@@ -1,12 +1,12 @@
-package com.schoolproject.hotel.controller.dto,
+package com.schoolproject.hotel.controller.dto;
 
 public record HotelResponse(
-        Long id,
+     Long id,
 
-         String name,
+     String name,
 
-         String address,
+     String address,
 
-         int availableRooms
+     int availableRooms
 ) {
 }
