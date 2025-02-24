@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@Controller
+@Controller("/hotel")
 public class HomeController {
 
     private HotelService hotelService;
 
-    @GetMapping
+    public HomeController(HotelService hotelService) {
+        this.hotelService = hotelService;
+    }
+
+    @GetMapping("/")
     public String home(Model model) {
         List<HotelResponse> hotelList = hotelService.getHotels();
         model.addAttribute("hotelList", hotelList);
