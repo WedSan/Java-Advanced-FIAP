@@ -1,12 +1,53 @@
 package com.schoolproject.hotel.controller.dto;
 
-public record HotelResponse(
-     Long id,
+public class HotelResponse{
+    private Long id;
 
-     String name,
+    private String name;
 
-     String address,
+    private AddressResponse address;
 
-     int availableRooms
-) {
+    private int availableRooms;
+
+    public HotelResponse() {
+    }
+
+    public HotelResponse(Long id, String name, AddressResponse address, int availableRooms) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.availableRooms = availableRooms;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AddressResponse getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressResponse address) {
+        this.address = address;
+    }
+
+    public int getAvailableRooms() {
+        return availableRooms;
+    }
+
+    public void setAvailableRooms(int availableRooms) {
+        this.availableRooms = availableRooms;
+    }
 }

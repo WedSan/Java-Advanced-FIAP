@@ -13,6 +13,7 @@ public class HotelEntity {
     private String name;
 
     @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity address;
 
     private int availableRooms;

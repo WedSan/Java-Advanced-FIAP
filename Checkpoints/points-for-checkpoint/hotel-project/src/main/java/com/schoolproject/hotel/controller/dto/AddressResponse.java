@@ -1,30 +1,22 @@
-package com.schoolproject.hotel.model;
+package com.schoolproject.hotel.controller.dto;
 
-import jakarta.persistence.*;
+public class AddressResponse{
+     private Long id;
 
-@Entity
-@Table(name = "TB_ADDRESS_PFP")
-public class AddressEntity {
+     private String street;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     private String number;
 
-    private String street;
+     private String neighborhood;
 
-    @Column(name = "address_number")
-    private String number;
+     private String city;
 
-    private String neighborhood;
+     private String state;
 
-    private String city;
-
-    private String state;
-
-    public AddressEntity() {
+    public AddressResponse() {
     }
 
-    public AddressEntity(Long id, String street, String number, String neighborhood, String city, String state) {
+    public AddressResponse(Long id, String street, String number, String neighborhood, String city, String state) {
         this.id = id;
         this.street = street;
         this.number = number;

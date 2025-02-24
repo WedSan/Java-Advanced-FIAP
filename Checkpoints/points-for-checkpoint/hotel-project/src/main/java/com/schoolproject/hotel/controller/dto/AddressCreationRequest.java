@@ -1,15 +1,66 @@
 package com.schoolproject.hotel.controller.dto;
 
-public record AddressCreationRequest(
+public class AddressCreationRequest{
 
-        String street,
+    private String street;
 
-        String number,
+    private String number;
 
-        String neighborhood,
+    private String neighborhood;
 
-        String city,
+    private String city;
 
-        String state
-) {
+    private String state;
+
+
+    public AddressCreationRequest() {
+    }
+
+    public AddressCreationRequest(String street, String number, String neighborhood, String city, String state) {
+        this.street = street;
+        this.number = number;
+        this.neighborhood = neighborhood;
+        this.city = city;
+        this.state = state;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 }
