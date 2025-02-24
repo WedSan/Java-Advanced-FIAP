@@ -1,5 +1,6 @@
 package com.schoolproject.hotel.service;
 
+import com.schoolproject.hotel.controller.dto.HotelCreationRequest;
 import com.schoolproject.hotel.controller.dto.HotelResponse;
 import com.schoolproject.hotel.model.HotelEntity;
 import com.schoolproject.hotel.repository.HotelRepository;
@@ -21,6 +22,20 @@ public class HotelService {
         return hotels.stream().map((e)-> convertToHotelDTO(e)).toList();
     }
 
+    public String registerHotel(HotelCreationRequest req){
+        HotelEntity hotel = convertToHotelObj(req);
+
+    }
+
+    public HotelEntity convertToHotelObj(HotelCreationRequest hotelDTO){
+        return new HotelEntity(
+            null,
+            hotelDTO.name(),
+            hotelDTO.address(),
+            hotelDTO.availableRooms()
+        );
+    }
+
     public HotelResponse convertToHotelDTO(HotelEntity hotel){
         return new HotelResponse(
                 hotel.getId(),
@@ -29,4 +44,6 @@ public class HotelService {
                 hotel.getAvailableRooms()
         );
     }
+
+
 }
