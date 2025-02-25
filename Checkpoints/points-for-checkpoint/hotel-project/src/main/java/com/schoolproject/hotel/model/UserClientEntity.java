@@ -1,18 +1,19 @@
 package com.schoolproject.hotel.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "TB_USER_PFP")
 public class UserClientEntity {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
+
+    public UserClientEntity() {
+    }
 
     public UserClientEntity(Long id, String name) {
         this.id = id;
