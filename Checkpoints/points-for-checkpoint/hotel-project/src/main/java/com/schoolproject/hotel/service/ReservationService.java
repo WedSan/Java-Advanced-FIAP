@@ -41,7 +41,7 @@ public class ReservationService {
         repository.save(reservation);
     }
 
-    public List<ReservationRespone> getRoomReservation(Long hotelId){
-
-    }
+//    public List<ReservationRespone> getRoomReservation(Long hotelId){
+//
+//    }
 }

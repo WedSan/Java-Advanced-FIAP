@@ -30,6 +30,9 @@
             <div class="card-footer text-center">
                 <a href="#" th:href="@{/}" class="btn btn-primary">Back to Home</a>
             </div>
+            <div class="card-footer text-center">
+                <a href="#" th:href="@{/hotel/{id}/edit(id=${hotel.getId()})}" class="btn btn-primary">Update hotel</a>
+            </div>
         </div>
     </div>
 </main>

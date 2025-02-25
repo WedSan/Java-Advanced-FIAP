@@ -2,11 +2,13 @@ package com.schoolproject.hotel.service;
 
 import com.schoolproject.hotel.controller.dto.HotelCreationRequest;
 import com.schoolproject.hotel.controller.dto.HotelResponse;
+import com.schoolproject.hotel.controller.dto.HotelUpdateRequest;
 import com.schoolproject.hotel.mapper.HotelMapper;
 import com.schoolproject.hotel.model.AddressEntity;
 import com.schoolproject.hotel.model.HotelEntity;
 import com.schoolproject.hotel.repository.HotelRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +43,17 @@ public class HotelService {
         HotelEntity hotel = HotelMapper.convertDTOToHotelObj(req);
         AddressEntity address = addressService.saveAddress(req.getAddress());
         hotel.setAddress(address);
+        repository.save(hotel);
+    }
+
+    public void updateHotel(HotelUpdateRequest req, Long hotelId, Model model){
+        Optional<HotelEntity> hotelFound = repository.findById(hotelId);
+        if (hotelFound.isEmpty()){
+            model.addAttribute("errorNotFound", "Hotel not found with id: " + hotelId);
+            return;
+        }
+        HotelEntity hotel = hotelFound.get();
+        hotel.setAvailableRooms(req.getAvailableRooms());
         repository.save(hotel);
     }
 
