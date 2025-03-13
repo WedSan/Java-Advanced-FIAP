@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{city.register.title}">Cadastro de Cidade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center" th:text="#{city.register.title}">Cadastro de Cidade</h5>
+                    <form th:action="@{/city}" method="post" th:object="${cityReq}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label" th:text="#{city.register.label.name}">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="latitude" class="form-label" th:text="#{city.register.label.latitude}">Latitude</label>
+                            <input type="number" min="-90" max="90" step="any" class="form-control" id="latitude" name="latitude" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="longitude" class="form-label" th:text="#{city.register.label.longitude}">Longitude</label>
+                            <input type="number"  min="-180" max="180" class="form-control" step="any" id="longitude" name="longitude" required>
+                            <div class="text-danger" th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary w-100" th:text="#{city.register.submit}">Enviar</button>
+                        </div>
+
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger" th:text="#{city.register.error.invalid_data}">Dados inválidos</div>
+                        </div>
+                        <div th:if="${#fields.hasGlobalErrors()}">
+                            <div class="alert alert-danger" th:each="error : ${#fields.globalErrors}" th:text="${error}">Dados inválidos</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

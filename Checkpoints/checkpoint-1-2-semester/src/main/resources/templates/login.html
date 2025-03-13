@@ -28,6 +28,9 @@
                         <div th:if="${param.error}">
                             <div class="alert alert-danger" th:text="#{login.error.invalid_credentials}"></div>
                         </div>
+                        <div class="text-center mt-3">
+                            <a href="/user/form" class="btn btn-link" th:text="#{login.registernewaccount}"></a>
+                        </div>
 <!--                        <div th:if="${param.logout}">-->
 <!--                            <div class="alert alert-success">Você saiu com sucesso</div>-->
 <!--                        </div>-->
