@@ -13,6 +13,11 @@ java {
 	}
 }
 
+tasks.jar {
+	archiveBaseName.set("checkpoint")
+	archiveVersion.set("1.0.0")
+}
+
 repositories {
 	mavenCentral()
 }
